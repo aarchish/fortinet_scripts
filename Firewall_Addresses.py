@@ -2,8 +2,6 @@
 import pandas as pd;
 import openpyxl as xl;
 
-#df = pd.read_excel("Subnets.xlsx") 
-#print(df)
 
 filePath = input("Enter Excel file path: ");
 print("Following column values are mandatory and cells cannot be empty");
@@ -12,20 +10,15 @@ print("Column B : Type of Address Variable - Subnet or FQDN");
 print("Column C : Address Object Variable");
 print("Column D : Comments for Firewall Object");
 
-#filePath = "Subnets.xlsx";
 wb_obj = xl.load_workbook(filePath);
 sheet_obj = wb_obj.active;
-#print(sheet_obj.max_row);
-#print(sheet_obj.max_column);
+
 name_prefix_required = input("is a prefix required for all the objects to be created?(True/False) : ");
 name_prefix = "";
 if(name_prefix_required == "True") : name_prefix = input("Enter the common name prefix that is required : ")
 
 op = input("Enter output file name with .txt (eg: output.txt) (new file will be created): ");
-#op = "output1.txt";
 file = open(op, "x");
-#L = ["This is Lagos \n","This is Python \n","This is Fcc \n"]
-#file.writelines(L);
 file.writelines("config firewall address\n");
 
 #for col in sheet_obj.iter_cols(1, sheet_obj.max_column):

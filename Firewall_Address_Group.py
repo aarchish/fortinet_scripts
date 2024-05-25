@@ -10,7 +10,6 @@ object_comment = input("Comments for Firewall Object: ");
 outputFile.writelines("config firewall addrgrp\n");
 outputFile.writelines("edit "+address_group_name+"\n");
 
-#member_line = "append member" if existing_address_group else "set member" ;
 object_count = 0;
 
 for line in inputFile:

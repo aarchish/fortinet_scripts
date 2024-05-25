@@ -6,7 +6,7 @@ import openpyxl as xl;
 filePath = input("Enter Excel file path: ");
 print("Following column values are mandatory and cells cannot be empty");
 print("Column A : Object Name Variable ");
-print("Column B : Type of Address Variable - Subnet or FQDN");
+print("Column B : Type of Address Variable - subnet or fqdn");
 print("Column C : Address Object Variable");
 print("Column D : Comments for Firewall Object");
 
@@ -24,19 +24,18 @@ file.writelines("config firewall address\n");
 #for col in sheet_obj.iter_cols(1, sheet_obj.max_column):
 for row in sheet_obj.iter_rows(2, sheet_obj.max_row):
     object_name = ("edit "+name_prefix+row[0].value) if (name_prefix_required) else ("edit "+row[0].value);
-    object_type = "set type " +row[1].value;
-    object_address = row[1].value+" "+row[2].value;
-    object_comment = "set comment "+row[3].value;
-
     file.writelines(object_name+'\n');
-    #file.writelines('\n');
-    file.writelines(object_type+'\n');
-    #file.writelines('\n'+'\n');
+    
+    if(row[1].value == "fqdn"): file.writelines("set type fqdn\n");
+
+    object_address = row[1].value+" "+row[2].value;
     file.writelines(object_address+'\n');
-    #file.writelines('\n');
+
+    object_comment = "set comment "+row[3].value;
     file.writelines(object_comment+'\n');
-    #file.writelines('\n'); 
+    
     file.writelines("next\n");
+
 file.writelines("end\n");
 file.close();
 

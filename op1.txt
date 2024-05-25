@@ -1,0 +1,10 @@
+config firewall address
+edit Evansville
+subnet 10.80.56.0/26
+set comment Evansville_Bridge_Subnet
+next
+edit Florence
+subnet 10.85.26.64/27
+set comment Florence_Bridge_Subnet
+next
+end

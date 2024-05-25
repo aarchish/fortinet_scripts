@@ -30,9 +30,7 @@ file.writelines("config firewall address\n");
 
 #for col in sheet_obj.iter_cols(1, sheet_obj.max_column):
 for row in sheet_obj.iter_rows(2, sheet_obj.max_row):
-    if(name_prefix_required) : 
-        object_name = "edit "+name_prefix+row[0].value;     
-    else: object_name = "edit "+row[0].value;
+    object_name = ("edit "+name_prefix+row[0].value) if (name_prefix_required) else ("edit "+row[0].value);
     object_type = "set type " +row[1].value;
     object_address = row[1].value+" "+row[2].value;
     object_comment = "set comment "+row[3].value;

@@ -1,4 +1,3 @@
-
 import pandas as pd;
 import openpyxl as xl;
 
@@ -28,10 +27,10 @@ for row in sheet_obj.iter_rows(2, sheet_obj.max_row):
     
     if(row[1].value == "fqdn"): file.writelines("set type fqdn\n");
 
-    object_address = row[1].value+" "+row[2].value;
+    object_address = "set "+row[1].value+" "+row[2].value;
     file.writelines(object_address+'\n');
 
-    object_comment = "set comment "+row[3].value;
+    object_comment = "set comment \""+row[3].value+"\"";
     file.writelines(object_comment+'\n');
     
     file.writelines("next\n");

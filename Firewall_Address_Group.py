@@ -16,7 +16,7 @@ for line in inputFile:
         list = line.split(maxsplit=1)
         outputFile.writelines("append member "+list[1]); 
 
-outputFile.writelines("set comment "+object_comment+'\n');
+outputFile.writelines("set comment \""+object_comment+'\"\n');
 outputFile.writelines("next\n");
 outputFile.writelines("end\n");
 outputFile.close();
